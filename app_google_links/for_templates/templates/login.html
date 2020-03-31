@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% set title = "Sign In" %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    {% if error %}<div class="error" style="color: red;"><strong>Error:</strong> {{ error }}</div>{% endif %}
+
+    <form action="login" method="post" accept-charset="utf-8"
+      enctype="application/x-www-form-urlencoded">
+
+        <label for="login">Login:</label>
+        <input id="login" name="login" type="text" value="" placeholder="Type your login" autofocus/>
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" placeholder="Type your password" value=""/>
+
+        <input type="submit" class="submit_sign" value="Sign In"/>
+    </form>
+{% endblock %}
+
+

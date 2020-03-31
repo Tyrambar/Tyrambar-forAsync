@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% block head %}
+            <link rel="stylesheet" type="text/css"
+          href="{{ url('static', filename='style.css') }}" />
+      {% if title %}
+      <title>{{ title }} - App_google_links</title>
+      {% else %}
+      <title>Welcome to App</title>
+      {% endif %}
+        {% endblock %}
+    </head>
+    <body>
+
+        <div>
+            App for google links:
+            <a href="{{ url('index') }}" class="main_links"><b>Home</b></a>
+            <a href="{{ url('signup') }}" class="main_links"><b>Sign Up</b></a>
+            {% if current_user.is_anonymous %}
+                <a href="{{ url('login') }}" class="main_links"><b>Sign In</b></a>
+            {% else %}
+                <a href="{{ url('logout') }}" class="main_links"><b>Logout</b></a>
+            {% endif %}
+        </div>
+        <hr>
+
+    {% block content %}{% endblock %}
+
+    </body>
+</html>

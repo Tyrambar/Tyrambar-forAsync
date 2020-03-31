@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% set title = "Your account" %}
+
+{% block content %}
+    <h1>Hello, {{ user.name }}!</h1>
+    {% if links %}
+            <ul>
+            {% for link in links %}
+                <div class="main_content">
+                    <li><a href="https://drive.google.com/open?id={{ link.url }}" target="_blank">{{ link.name_url }}</a></li>
+                    <a href="https://drive.google.com/uc?export=download&id={{ link.url }}">
+                        <button name="load_link" class="button_load" value="azaza">Download file</button></a>
+
+                    <form action="{{ url('del_link', id4del_link=link.id) }}" method="post">
+                        <input type="submit" name="del_link" class="button_del" value="Delete link"/>
+                    </form>
+                </div>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Links are not found.</p>
+    {% endif %}
+    <form action="create" method="post">
+        <p>
+            <input id="name_link" name="name_link" type="text" value="" size=40 placeholder="Name link" autofocus/>
+            <input id="url_link" name="url_link" type="text" value="" placeholder="URL link" size=40/>
+        </p>
+        <input type="submit" value="Add link"/>
+    </form>
+    <div class="additional_settings">
+    <form action="del_account" method="post">
+        <input type="submit" class="del_account" name="del_account" value="Delete your own account"/>
+    </form>
+    </div>
+    <form action="change_password" method="post">
+        <div><input type="submit" name="change_password" value="Change your own password"/></div>
+        {% if changing_password %}
+            <p>Your existing password:</p>
+            <input type="password" name="past_password" class="password" placeholder="Type your past password">
+
+            <p>Your new password:</p>
+            <input type="password" name="new_password" class="password" placeholder="Type new password">
+
+            <p>Repeat new password:</p>
+            <input type="password" name="check_new_password" class="password" placeholder="Type password one more">
+
+            <input type="submit" class="button_signup" value="To change password!"/>
+        {% endif %}
+    </form>
+{% endblock %}

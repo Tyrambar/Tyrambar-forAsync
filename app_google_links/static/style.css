@@ -1,0 +1,26 @@
+body {
+    background: #f2f3f5;
+    padding: 10px 20px 0 20px;
+}
+
+.additional_settings {
+    margin-top: 30px;
+}
+
+.main_content {
+    margin-bottom: 30px;
+}
+
+.button_load {
+    margin: 10px 0 10px 0;
+}
+.del_account {
+    color: red;
+}
+
+.main_links {
+    margin-left: 15px;
+}
+#name_link {
+    margin-right: 20px;
+}

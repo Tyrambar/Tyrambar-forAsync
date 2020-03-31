@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% set title = "Sign Up" %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+    {% if error %}<div class="error" style="color: red;"><strong>Error:</strong>{{ error }}</div>{% endif %}
+
+    <form action="signup" method="post">
+        <p>Your login:</p>
+        <input type="text" name="future_name" class="login" placeholder="Type your future login">
+
+        <p>Your own password:</p>
+        <input type="password" name="future_password" class="password" placeholder="Type your future password">
+
+        <p>Repeat password:</p>
+        <input type="password" name="check_password" class="password" placeholder="Type password one more">
+
+        <input type="submit" class="button_signup" value="Sign Up!"/>
+    </form>
+{% endblock %}
+
+
