@@ -3,14 +3,14 @@
 {% set title = "Your account" %}
 
 {% block content %}
-    <h1>Hello, {{ user.name }}!</h1>
+    <h1>Hello, {{ user }}!</h1>
     {% if links %}
             <ul>
             {% for link in links %}
                 <div class="main_content">
                     <li><a href="https://drive.google.com/open?id={{ link.url }}" target="_blank">{{ link.name_url }}</a></li>
                     <a href="https://drive.google.com/uc?export=download&id={{ link.url }}">
-                        <button name="load_link" class="button_load" value="azaza">Download file</button></a>
+                        <button name="load_link" class="button_load" value="">Download file</button></a>
 
                     <form action="{{ url('del_link', id4del_link=link.id) }}" method="post">
                         <input type="submit" name="del_link" class="button_del" value="Delete link"/>

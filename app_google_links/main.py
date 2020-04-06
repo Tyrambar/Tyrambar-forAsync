@@ -53,7 +53,6 @@ async def init_app(config):
     redis_pool = await setup_redis(app)
     setup_session(app, RedisStorage(redis_pool))
 
-    # needs to be after session setup because of `current_user_ctx_processor`
     aiohttp_jinja2.setup(
         app,
         loader=jinja2.PackageLoader('for_templates','templates'),
@@ -77,6 +76,7 @@ def main(configpath):
     app = init_app(config)
     web.run_app(app)
 
+
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
@@ -87,4 +87,3 @@ if __name__ == '__main__':
         main(args.config)
     else:
         parser.print_help()
-
