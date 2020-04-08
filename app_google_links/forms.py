@@ -6,7 +6,7 @@ async def validate_signup(request, form):
         wrong_login = await db.check_login(conn, form['future_name'])
         wrong_passw = check_passwords(form['future_password'],
                                       form['check_password'])
-        print('in valid', wrong_passw)
+
         if wrong_login:
             return {'error': 'Such login already exists'}
         elif wrong_passw:
@@ -53,7 +53,6 @@ async def execute_main(request, form, curr_user):
 
 
 def check_passwords(passw1, passw2):
-    print('paaaa', passw1, passw2)
     if passw1 != passw2:
         return True
     if len(passw1) < 5:
